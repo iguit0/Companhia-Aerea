@@ -4,8 +4,6 @@
      -> Igor Alves - 3902
      -> Mateus Lopes - 3987
      -> Gabriel Batalha - 3915
-     Auxiliar:
-     -> Matheus Vieira - 3929
      OBS: A senha para acesso do programa é:
      login: igm
      senha: 123
