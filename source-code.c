@@ -4,7 +4,7 @@
      -> Igor Alves - 3902
      -> Mateus Lopes - 3987
      -> Gabriel Batalha - 3915
-     OBS: A senha para acesso do programa È:
+     OBS: A senha para acesso do programa √©:
      login: igm
      senha: 123
 */
@@ -12,14 +12,14 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <string.h>
-    int cont,y,z,i,f;              // vari·veis (e/ou contadores) globais de controle (contador para cadastro de vÙos e etc).
-typedef struct CadastroNovoVoo{            //estrutura (struct) para armazenar vari·veis de um cadastro de novo vÙo.
+    int cont,y,z,i,f;              // vari√°veis (e/ou contadores) globais de controle (contador para cadastro de v√¥os e etc).
+typedef struct CadastroNovoVoo{            //estrutura (struct) para armazenar vari√°veis de um cadastro de novo v√¥o.
 	char origem_voo[50];
 	char destino_voo[50];
 	int capacidade_maxima;
 } NovoVoo;
 
-typedef struct Comprartickets{             //estrutura (struct) para armazenar vari·veis da compra de tickets.
+typedef struct Comprartickets{             //estrutura (struct) para armazenar vari√°veis da compra de tickets.
 	char nome[60];
 	char cpf[16];
 	int numvoo;
@@ -29,7 +29,7 @@ typedef struct Comprartickets{             //estrutura (struct) para armazenar v
 	NovoVoo nv[5];          //assinando a struct.
 	Comprar_tickets ct[10];   // assinando a struct.
 	
-void Cadastrovoo(){                 // funÁ„o para cadastro de vÙos.
+void Cadastrovoo(){                 // fun√ß√£o para cadastro de v√¥os.
 		system("cls");
 		fflush(stdin);
 		printf("Digite a origem do voo %d: ",cont+1);
@@ -42,11 +42,11 @@ void Cadastrovoo(){                 // funÁ„o para cadastro de vÙos.
 		printf("\n");
 		printf("Digite a capacidade maxima de passageiros: ");
 		scanf("%d",&nv[cont].capacidade_maxima);
-		printf("\n\n\t\t\t >>> VÙo [%d] cadastrado com sucesso !! <<< \n\n",cont+1);
+		printf("\n\n\t\t\t >>> V√¥o [%d] cadastrado com sucesso !! <<< \n\n",cont+1);
 		cont++;
 }
 
-void Info_voos(){                        //funÁ„o para informar os vÙos cadastrados.
+void Info_voos(){                        //fun√ß√£o para informar os v√¥os cadastrados.
 	for(y=0;y < cont;y++){	
 		printf("Voo %d:\n",y+1);
 		printf("Origem: %s -> Destino: %s\n",nv[y].origem_voo,nv[y].destino_voo);
@@ -55,7 +55,7 @@ void Info_voos(){                        //funÁ„o para informar os vÙos cadastra
 	}
 }
 
-void ComprarBilhetes(){          // funÁ„o para a compra de bilhetes.
+void ComprarBilhetes(){          // fun√ß√£o para a compra de bilhetes.
 	    fflush(stdin);
 		printf("Digite seu nome: ");
 		gets(ct[z].nome);
@@ -69,17 +69,17 @@ void ComprarBilhetes(){          // funÁ„o para a compra de bilhetes.
 		printf("\n");
 		ct[z].numvoo += -1;
 		    if (nv[ct[z].numvoo].capacidade_maxima >= 1) {
-		       printf("\n\t\t\tParabÈns!! Bilhete comprado com sucesso.");
-		       nv[ct[z].numvoo].capacidade_maxima --;        //Se o bilhete foi comprado com sucesso, ent„o, diminuir -1 na capacidade m·xima.
-	       	   ct[z].numticket =  z*z+1;                 // Os n˙meros de tickets s„o aleatÛrios, justamente para criar essa ideia de aleatoriedade para n„o confundir os clientes.
+		       printf("\n\t\t\tParab√©ns!! Bilhete comprado com sucesso.");
+		       nv[ct[z].numvoo].capacidade_maxima --;        //Se o bilhete foi comprado com sucesso, ent√£o, diminuir -1 na capacidade m√°xima.
+	       	   ct[z].numticket =  z*z+1;                 // Os n√∫meros de tickets s√£o aleat√≥rios, justamente para criar essa ideia de aleatoriedade para n√£o confundir os clientes.
 		       z++;
 	        }
 			else{
-		       printf("\nDesculpe, n„o h· poltronas livres :( .");
+		       printf("\nDesculpe, n√£o h√° poltronas livres :( .");
 			}
 }
 
-void BilhetesVendidos(){             // funÁ„o para consultar os bilhetes vendidos
+void BilhetesVendidos(){             // fun√ß√£o para consultar os bilhetes vendidos
         int cpfverificar=0;
         char verificar_cpf[16];
         fflush(stdin);
@@ -87,35 +87,35 @@ void BilhetesVendidos(){             // funÁ„o para consultar os bilhetes vendid
         gets(verificar_cpf);
         for(i=0;i < z;i++){
             if(strcmp(ct[i].cpf,verificar_cpf)==0){              //comparando cpf com o comando "strcmp" da biblioteca <string.h>        
-                        printf("\nTicket n∫: %d", ct[i].numticket);
+                        printf("\nTicket n¬∫: %d", ct[i].numticket);
                         printf("\nNome: %s", ct[i].nome);
                         printf("\nCPF: %s", ct[i].cpf);
-                        printf("\nN˙mero do VÙo: %d", ct[i].numvoo+1);
+                        printf("\nN√∫mero do V√¥o: %d", ct[i].numvoo+1);
                         cpfverificar = +1;              // se encontrar um CPF, o contador aumenta.
                 }
         }
-        if (cpfverificar == 0) {             // se contador (do cpf) ficar 0 È porque n„o encontrou CPF cadastrado.
-                printf("\nInfelizmente, o CPF n„o foi localizado.");
+        if (cpfverificar == 0) {             // se contador (do cpf) ficar 0 √© porque n√£o encontrou CPF cadastrado.
+                printf("\nInfelizmente, o CPF n√£o foi localizado.");
         }
 }
-void cancelartickets(){          // funÁ„o para cancelar os tickets (bilhetes).
+void cancelartickets(){          // fun√ß√£o para cancelar os tickets (bilhetes).
 	int o;
 	int cancelar=0;
-	printf("\nDigite o n∫ do bilhete a ser cancelado: ");
+	printf("\nDigite o n¬∫ do bilhete a ser cancelado: ");
 	scanf("%d",&cancelar);
 	for(o=0;o < z;o++){
 		if (ct[o].numticket == cancelar) {                 
- 			nv[ct[z].numvoo].capacidade_maxima ++;     //Se o bilhete foi cancelado com sucesso, ent„o, aumentar +1 na capacidade m·xima.
+ 			nv[ct[z].numvoo].capacidade_maxima ++;     //Se o bilhete foi cancelado com sucesso, ent√£o, aumentar +1 na capacidade m√°xima.
 			printf("\n\nBilhete Cancelado com sucesso!!");
  		}
 		
 	}
 }
 
-void relatoriogeral(){          //funÁ„o para printar o relatÛrio geral de passageiros por vÙo.
+void relatoriogeral(){          //fun√ß√£o para printar o relat√≥rio geral de passageiros por v√¥o.
 	int j;
 	int relatorio=0;
-	printf("\nDigite o n∫ de um vÙo: ");
+	printf("\nDigite o n¬∫ de um v√¥o: ");
 	scanf("%d",&relatorio);
 	relatorio += -1;
 		for(j=0;j < z;j++){
@@ -130,21 +130,21 @@ void relatoriogeral(){          //funÁ„o para printar o relatÛrio geral de passa
 }
 
 void menu(){
-    setlocale(LC_ALL,"Portuguese");       // DefiniÁ„o para uso de configuraÁıes em portuguÍs.
+    setlocale(LC_ALL,"Portuguese");       // Defini√ß√£o para uso de configura√ß√µes em portugu√™s.
     int opcao;
     do{
 		system("cls");
 		printf("\t\t\t**** COMPANHIA AEREA I.G.M. **** \n\n");      // I.G.M. = Igor.Gabriel.Mateus     :)
 		printf("\t\t\t#### SEJA BEM VINDO(A) #### \n");     
-		printf(":: Menu de OpÁıes ::\n\n");
-		printf("1 - Cadastrar um novo vÙo\n");
-		printf("2 - Visualizar informaÁıes de vÙos\n");
+		printf(":: Menu de Op√ß√µes ::\n\n");
+		printf("1 - Cadastrar um novo v√¥o\n");
+		printf("2 - Visualizar informa√ß√µes de v√¥os\n");
 		printf("3 - Realizar vendas de bilhetes\n");
 		printf("4 - Consultar bilhetes vendidos\n");
 		printf("5 - Cancelar Bilhetes\n");
-		printf("6 - RelatÛrio de passageiros por vÙo\n");
+		printf("6 - Relat√≥rio de passageiros por v√¥o\n");
 		printf("7 - Encerrar o sistema\n\n");
-		printf("Escolha uma opÁ„o:  ");
+		printf("Escolha uma op√ß√£o:  ");
 		scanf("%d",&opcao);
 		printf("\a");   // beepzinho :)
 		system("cls");
@@ -154,7 +154,7 @@ void menu(){
 	    		printf("\n\n");
 	    		system("pause");
 			    break;
-			case 2:                                   //Visualizar informaÁıes de vÙos
+			case 2:                                   //Visualizar informa√ß√µes de v√¥os
 			    Info_voos();
 			    printf("\n\n");
 			    system("pause");
@@ -175,7 +175,7 @@ void menu(){
 				system("pause");
 				break;
 			case 6:
-				relatoriogeral();   // RelatÛrio de passageiros por vÙo.
+				relatoriogeral();   // Relat√≥rio de passageiros por v√¥o.
 				printf("\n\n");
 				system("pause");
 				break;
@@ -184,20 +184,20 @@ void menu(){
 	}while(opcao != 7);
 }
 
-void login(){           // funÁ„o respons·vel pelo sistema de Login.
-	setlocale(LC_ALL,"Portuguese");       // DefiniÁ„o para uso de configuraÁıes em portuguÍs.
+void login(){           // fun√ß√£o respons√°vel pelo sistema de Login.
+	setlocale(LC_ALL,"Portuguese");       // Defini√ß√£o para uso de configura√ß√µes em portugu√™s.
 	int x,j=1,k=1;
 	char *login;
 	char *senha;
 	char usuario[30];
 	login = (char *) malloc(5*sizeof(char));   //5 bytes
 	senha = (char *) malloc(5*sizeof(char));   //5 bytes
-	printf("Digite seu nome: ");                  // IdentificaÁ„o do Usu·rio.
+	printf("Digite seu nome: ");                  // Identifica√ß√£o do Usu√°rio.
 	gets(usuario);
 	fflush(stdin);
-	printf("\t\t\t ** Ol·, seja bem vindo(a) %s ** \n\n\n",usuario);  //Sistema de login...
+	printf("\t\t\t ** Ol√°, seja bem vindo(a) %s ** \n\n\n",usuario);  //Sistema de login...
 	fflush(stdin);
-	for (x=0;x<99999;x++){     // x = n˙mero de tentativas de login, um loop (quase) infinito.
+	for (x=0;x<99999;x++){     // x = n√∫mero de tentativas de login, um loop (quase) infinito.
 		printf("\n\tLogin: ");                
 		fflush (stdin);
 		gets(login);
@@ -215,8 +215,8 @@ void login(){           // funÁ„o respons·vel pelo sistema de Login.
 			printf ("\n\nTente novamente. . .\n\n ");
     	}
 	}
-	free(login); //liberando memÛria
-	free(senha);  //liberando memÛria
+	free(login); //liberando mem√≥ria
+	free(senha);  //liberando mem√≥ria
 	login = NULL;
 	senha = NULL;
 }
